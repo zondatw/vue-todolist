@@ -1,0 +1,19 @@
+.todo-nav {
+  a {
+    color: $darken-primary;
+    flex: 1;
+    text-decoration: none;
+    display: block;
+    font-size: 1.5rem;
+    padding-top: 1.9vh;
+    padding-bottom: 2vh;
+    text-align: center;
+
+    &:active, &:hover, &.active{
+      box-shadow: 0 -0.5vh $darken-primary inset;
+    }
+    &.active {
+      color: #ffffff;
+    }
+  }
+}

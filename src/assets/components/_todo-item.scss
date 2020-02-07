@@ -6,6 +6,10 @@
   position: relative;
   margin-top: 8px;
 
+  &.stared {
+    background-color: #FFF2DC;
+  }
+
   // first level
   .todo-header {
     display: flex;
@@ -93,6 +97,10 @@
       margin-left: 16px;
       position: relative;
       top: -8px;
+    }
+
+    .stared {
+      color: #F5A623
     }
   }
 

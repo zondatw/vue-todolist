@@ -38,12 +38,14 @@ export default {
             'end': '2020/02/06',
           },
           'file': 'media/file/aaa.png',
+          'completed': true,
         },
         {
           'id': 2,
           'title': 'test test test test test test test',
           'stared': false,
-          'comment': `I'm test test test test`
+          'comment': `I'm test test test test`,
+          'completed': false,
 
         },
       ],

@@ -86,6 +86,11 @@
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+
+      &.completed {
+        text-decoration: line-through;
+        color: #9B9B9B;
+      }
     }
   }
 
@@ -97,6 +102,10 @@
       margin-left: 16px;
       position: relative;
       top: -8px;
+    }
+
+    a {
+      color: black;
     }
 
     .stared {

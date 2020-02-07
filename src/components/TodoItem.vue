@@ -3,17 +3,24 @@
     <div class="todo-header">
       <!-- checkbox -->
       <div class="todo-check">
-        <input type="checkbox" id="`todo-checkbox-${todo.id}`">
-        <label for="`todo-checkbox-${todo.id}`"></label>
+        <input
+          type="checkbox"
+          :id="`todo-checkbox-${todo.id}`"
+          v-model="todo.completed"
+          @change="updateStatus('completed', todo.completed)"
+        >
+        <label :for="`todo-checkbox-${todo.id}`"></label>
       </div>
       <!-- title -->
       <div class="todo-title">
-        <span>{{todo.title}}</span>
+        <span :class="{completed: todo.completed}">{{todo.title}}</span>
       </div>
       <!-- star and edit button -->
       <div class="todo-control">
-        <i class="fas fa-star stared" v-if="todo.stared"></i>
-        <i class="far fa-star" v-else></i>
+        <a href="#" @click.prevent="updateStatus('stared', !todo.stared)">
+          <i class="fas fa-star stared" v-if="todo.stared"></i>
+          <i class="far fa-star" v-else></i>
+        </a>
         <i class="fas fa-pencil-alt"></i>
       </div>
     </div>
@@ -33,5 +40,11 @@
 export default {
   props: ['todo'],
   name: 'Todo',
+  methods: {
+    updateStatus (field, status) {
+      const vm = this
+      vm.todo[field] = status
+    }
+  }
 }
 </script>

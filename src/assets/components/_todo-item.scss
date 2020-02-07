@@ -4,6 +4,7 @@
   background-color: #F2F2F2;
   border-radius: 3px;
   position: relative;
+  margin-top: 8px;
 
   // first level
   .todo-header {
@@ -73,8 +74,14 @@
     font-size: 1.5rem;
 
     span {
+      display: block;
       position: relative;
+      left: 0px;
       top: -8px;
+      width: 70%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
   }
 
@@ -90,6 +97,10 @@
   }
 
   .todo-icon {
-    width: 24px;
+    margin-right: 10px;
+
+    span {
+      margin-left: 2px;
+    }
   }
 }

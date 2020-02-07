@@ -14,8 +14,8 @@
           <div class="todo-header">
             <!-- checkbox -->
             <div class="todo-check">
-              <input type="checkbox">
-              <label></label>
+              <input type="checkbox" id="checkboxTest">
+              <label for="checkboxTest"></label>
             </div>
             <!-- title -->
             <div class="todo-title">

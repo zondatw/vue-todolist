@@ -14,4 +14,54 @@
     display: flex;
     padding: 0px 32px 25px 72px;
   }
+
+  // second level
+  .todo-check {
+    $checkbox-size: 24px;
+
+    input[type="checkbox"] {
+      position: absolute;
+      opacity: 0;
+
+      & + label {
+        position: relative;
+        cursor: pointer;
+      }
+
+      & + label:before {
+        content: '';
+        height: $checkbox-size;
+        width: $checkbox-size;
+        vertical-align: text-top;
+        display: inline-block;
+        background: #FFFFFF;
+        border-radius: 3px;
+      }
+
+      &:hover + label:before, &:checked + label:before {
+        background: theme-color('primary');
+      }
+
+      &:checked + label:after {
+        content: '';
+        position: absolute;
+        left: 4px;
+        top: 12px;
+        height: 3px;
+        width: 3px;
+        background: #FFFFFF;
+        box-shadow:
+          2px 0px 0 #FFFFFF,
+          4px 0px 0 #FFFFFF,
+          6px 0px 0 #FFFFFF,
+          6px -2px 0 #FFFFFF,
+          6px -4px 0 #FFFFFF,
+          6px -6px 0 #FFFFFF,
+          6px -8px 0 #FFFFFF,
+          6px -10px 0 #FFFFFF,
+          6px -12px 0 #FFFFFF;
+        transform: rotate(45deg);
+      }
+    }
+  }
 }

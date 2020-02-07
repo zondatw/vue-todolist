@@ -30,11 +30,11 @@
           <div class="todo-body">
 
           </div>
-          <div class="todo-footer">
+          <div class="todo-footer text-secondary">
             <!-- date and icon of file and message -->
-            <i class="far fa-calendar-alt"></i>
-            <i class="far fa-file"></i>
-            <i class="far fa-comment-dots"></i>
+            <i class="far fa-calendar-alt todo-icon"></i>
+            <i class="far fa-file todo-icon"></i>
+            <i class="far fa-comment-dots todo-icon"></i>
           </div>
         </div>
       </div>

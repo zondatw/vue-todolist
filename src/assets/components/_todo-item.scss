@@ -10,6 +10,7 @@
     display: flex;
     padding: 24px 32px 15px 32px;
   }
+
   .todo-footer {
     display: flex;
     padding: 0px 32px 25px 72px;
@@ -18,6 +19,8 @@
   // second level
   .todo-check {
     $checkbox-size: 24px;
+    height: $checkbox-size;
+    width: 40px;
 
     input[type="checkbox"] {
       position: absolute;
@@ -63,5 +66,30 @@
         transform: rotate(45deg);
       }
     }
+  }
+
+  .todo-title {
+    flex: 1;
+    font-size: 1.5rem;
+
+    span {
+      position: relative;
+      top: -8px;
+    }
+  }
+
+  .todo-control {
+    font-size: 1.5rem;
+
+    i {
+      margin-right: 16px;
+      margin-left: 16px;
+      position: relative;
+      top: -8px;
+    }
+  }
+
+  .todo-icon {
+    width: 24px;
   }
 }

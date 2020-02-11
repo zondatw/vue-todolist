@@ -16,12 +16,22 @@
           ></todo-item>
         </div>
       </div>
+      <div class="mt-4">
+        <draggable v-model="todos">
+          <div v-for="item in todos" :key="item.id">
+            <todo-item
+              :todo="item"
+            ></todo-item>
+          </div>
+        </draggable>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import TodoItem from './components/TodoItem'
+import draggable from 'vuedraggable'
 
 export default {
   name: 'app',
@@ -53,6 +63,13 @@ export default {
   },
   components: {
     TodoItem,
+    draggable
   }
 }
 </script>
+
+<style lang="scss">
+.draggable {
+  cursor: move;
+}
+</style>

@@ -1,20 +1,29 @@
 <template>
   <div class="todo-item">
-    <div class="todo-header">
+    <div class="todo-header" :class="{stared: cacheTodo.stared}">
       <!-- completed checkbox -->
       <div class="todo-check">
         <input
-          type="checkbox" :id="`todo-checkbox-`"
+          type="checkbox"
+          :id="`todo-checkbox-edit`"
+          v-model="cacheTodo.completed"
         >
-        <label :for="`todo-checkbox-`"></label>
+        <label :for="`todo-checkbox-edit`"></label>
       </div>
       <!-- todo title -->
       <div class="todo-title">
-        <input type="text" class="form-control">
+        <input
+          type="text"
+          class="form-control"
+          v-model="cacheTodo.title"
+        >
       </div>
       <!-- star and editing button -->
       <div class="todo-control">
-        <i class="fas fa-star stared"></i>
+        <a href="#" @click="updateStatus('stared', !cacheTodo.stared)">
+          <i class="fas fa-star stared" v-if="cacheTodo.stared"></i>
+          <i class="far fa-star" v-else></i>
+        </a>
         <i class="fas fa-pencil-alt editing"></i>
       </div>
     </div>
@@ -28,8 +37,8 @@
           <div class="todo-row-body">
             <b>Deadline</b>
             <div class="form-inline todo-form-control">
-              <input type="date" class="form-control border-0">
-              <input type="time" class="form-control border-0 ml-2">
+              <input type="date" class="form-control border-0" v-model="cacheTodo.deadline_start">
+              <input type="date" class="form-control border-0 ml-2" v-model="cacheTodo.deadline_end">
             </div>
           </div>
         </div>
@@ -62,6 +71,7 @@
               <textarea
                 class="form-control border-0"
                 placeholder="Type your memo here..."
+                v-model="cacheTodo.comment"
               ></textarea>
             </div>
           </div>
@@ -85,7 +95,13 @@
 
 <script>
 export default {
+  props: ['todo'],
   name: 'EditTodo',
+  data () {
+    return {
+      cacheTodo: {},
+    }
+  },
   mounted: function() {
     var todoEditFile = document.getElementById('todo-edit-file')
     todoEditFile.addEventListener('change', function(e) {
@@ -97,6 +113,23 @@ export default {
   methods: {
     closeEdit () {
       this.$emit('closeEditTodo')
+    },
+    updateStatus (field, status) {
+      this.cacheTodo[field] = status
+    }
+  },
+  created () {
+    if (!this.todo) {
+      this.cacheTodo = {
+        'title': '',
+        'stared': false,
+        'deadline_start': '',
+        'deadline_end': '',
+        'file': '',
+        'completed': false,
+      }
+    } else {
+      this.cacheTodo = {...this.todo}
     }
   }
 }

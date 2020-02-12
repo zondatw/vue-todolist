@@ -26,7 +26,7 @@
     </div>
     <div class="todo-footer text-secondary">
       <!-- date and icon of file and message -->
-      <i class="far fa-calendar-alt todo-icon" v-if="todo.deadline"><span>from {{todo.deadline.start}} to {{todo.deadline.end}}</span></i>
+      <i class="far fa-calendar-alt todo-icon" v-if="todo.deadline_start && todo.deadline_end"><span>from {{todo.deadline_start}} to {{todo.deadline_end}}</span></i>
       <i class="far fa-file todo-icon" v-if="todo.file"></i>
       <i class="far fa-comment-dots todo-icon" v-if="todo.comment"></i>
     </div>

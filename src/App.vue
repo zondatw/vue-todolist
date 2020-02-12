@@ -55,10 +55,8 @@ export default {
           'id': 1,
           'title': 'test yooooooooooooooo',
           'stared': true,
-          'deadline': {
-            'start': '2020/02/01',
-            'end': '2020/02/06',
-          },
+          'deadline_start': '2020/02/01',
+          'deadline_end': '2020/02/06',
           'file': 'media/file/aaa.png',
           'completed': true,
         },

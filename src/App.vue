@@ -30,8 +30,15 @@
         <draggable v-model="todos">
           <div v-for="item in todos" :key="item.id">
             <todo-item
+              v-if="editTodoId !== item.id"
               :todo="item"
+              @editTodo="editTodo"
             ></todo-item>
+            <edit-todo-item
+              v-if="editTodoId === item.id"
+              :todo="item"
+              @closeEditTodo="closeEdit"
+            ></edit-todo-item>
           </div>
         </draggable>
       </div>
@@ -50,13 +57,14 @@ export default {
     return {
       currentTab: 'myTasks',
       isNewTodo: false,
+      editTodoId: -1,
       todos: [
         {
           'id': 1,
           'title': 'test yooooooooooooooo',
           'stared': true,
-          'deadline_start': '2020/02/01',
-          'deadline_end': '2020/02/06',
+          'deadline_start': '2020-02-01',
+          'deadline_end': '2020-02-06',
           'file': 'media/file/aaa.png',
           'completed': true,
         },
@@ -84,10 +92,16 @@ export default {
   },
   methods: {
     addTodo () {
+      this.editTodoId = -1;
       this.isNewTodo = true;
+    },
+    editTodo (id) {
+      this.isNewTodo = false;
+      this.editTodoId = id;
     },
     closeEdit () {
       this.isNewTodo = false;
+      this.editTodoId = -1;
     }
   }
 }

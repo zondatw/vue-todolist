@@ -21,7 +21,9 @@
           <i class="fas fa-star stared" v-if="todo.stared"></i>
           <i class="far fa-star" v-else></i>
         </a>
-        <i class="fas fa-pencil-alt"></i>
+        <a href="#" @click.prevent="editTodo()">
+          <i class="fas fa-pencil-alt"></i>
+        </a>
       </div>
     </div>
     <div class="todo-footer text-secondary">
@@ -41,6 +43,9 @@ export default {
     updateStatus (field, status) {
       const vm = this
       vm.todo[field] = status
+    },
+    editTodo () {
+      this.$emit('editTodo', this.todo.id)
     }
   }
 }

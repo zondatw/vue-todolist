@@ -21,6 +21,12 @@
     padding: 0px 32px 25px 72px;
   }
 
+  .todo-container {
+    display: flex;
+    flex-direction: column;
+    padding: 0px 32px 25px 72px;
+  }
+
   // second level
   .todo-check {
     $checkbox-size: 24px;
@@ -73,11 +79,90 @@
     }
   }
 
+  .todo-file {
+    $file-size: 25px;
+    height: $file-size;
+    width: 40px;
+    display: flex;
+    flex-direction: column;
+
+    .todo-file-col {
+      display: flex;
+      flex: 1;
+      padding-right: 10px;
+
+      .todo-file-content {
+        display: block;
+        width: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+
+    input[type="file"] {
+      position: absolute;
+      display: none;
+
+      & + label {
+        position: relative;
+        cursor: pointer;
+      }
+
+      & + label:before {
+        content: '';
+        height: $file-size;
+        width: $file-size;
+        vertical-align: text-top;
+        display: inline-block;
+        background: #C8C8C8;
+        border-radius: 3px;
+      }
+
+      &:hover + label:before, &:checked + label:before {
+        background: theme-color('primary');
+      }
+
+      & + label:after {
+        content: '';
+        position: absolute;
+        left: 2.5px;
+        top: 12.5px;
+        height: 2.5px;
+        width: 2.5px;
+        box-shadow:
+          //left
+          0px 0px 0 #FFFFFF,
+          2px 0px 0 #FFFFFF,
+          4px 0px 0 #FFFFFF,
+          6px 0px 0 #FFFFFF,
+
+          // top
+          8px -2px 0 #FFFFFF,
+          8px -4px 0 #FFFFFF,
+          8px -6px 0 #FFFFFF,
+
+          // right
+          8px 0px 0 #FFFFFF,
+          10px 0px 0 #FFFFFF,
+          12px 0px 0 #FFFFFF,
+          14px 0px 0 #FFFFFF,
+
+          // bottom
+          8px 2px 0 #FFFFFF,
+          8px 4px 0 #FFFFFF,
+          8px 6px 0 #FFFFFF,
+          ;
+      }
+
+    }
+  }
+
   .todo-title {
     flex: 1;
     font-size: 1.5rem;
 
-    span {
+    span, input {
       display: block;
       position: relative;
       left: 0px;
@@ -91,6 +176,11 @@
         text-decoration: line-through;
         color: #9B9B9B;
       }
+    }
+
+    input {
+      top: -5px;
+      width: 100%;
     }
   }
 
@@ -111,6 +201,10 @@
     .stared {
       color: #F5A623
     }
+
+    .editing {
+      color: $primary;
+    }
   }
 
   .todo-icon {
@@ -119,5 +213,25 @@
     span {
       margin-left: 2px;
     }
+  }
+
+  .todo-body {
+    border-top: 2px solid $gray-500;
+    padding-top: 2%;
+  }
+
+  .todo-row {
+    display: flex;
+    & + .todo-row {
+      margin-top: 1.8%;
+    }
+  }
+
+  .todo-row-body {
+    flex: 1;
+  }
+
+  .todo-row-icon {
+    width: 24px;
   }
 }

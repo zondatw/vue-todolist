@@ -24,9 +24,6 @@
         <i class="fas fa-pencil-alt"></i>
       </div>
     </div>
-    <div class="todo-body">
-
-    </div>
     <div class="todo-footer text-secondary">
       <!-- date and icon of file and message -->
       <i class="far fa-calendar-alt todo-icon" v-if="todo.deadline"><span>from {{todo.deadline.start}} to {{todo.deadline.end}}</span></i>

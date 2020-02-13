@@ -2,8 +2,8 @@
   <div id="app">
     <div class="bg-primary">
       <div class="container justify-content-between d-flex todo-nav">
-        <a href="#" :class="{active: currentTab === 'myTasks'}" @click="currentTab = 'myTasks'">My Tasks</a>
-        <a href="#" :class="{active: currentTab === 'inProgress'}" @click="currentTab = 'inProgress'">In Progress</a>
+        <a href="#" :class="{active: currentTab === 'all'}" @click="currentTab = 'all'">My Tasks</a>
+        <a href="#" :class="{active: currentTab === 'progress'}" @click="currentTab = 'progress'">In Progress</a>
         <a href="#" :class="{active: currentTab === 'completed'}" @click="currentTab = 'completed'">Completed</a>
       </div>
     </div>
@@ -29,16 +29,18 @@
       <div class="mt-4">
         <draggable v-model="todos">
           <div v-for="item in todos" :key="item.id">
-            <todo-item
-              v-if="editTodoId !== item.id"
-              :todo="item"
-              @editTodo="editTodo"
-            ></todo-item>
-            <edit-todo-item
-              v-if="editTodoId === item.id"
-              :todo="item"
-              @closeEditTodo="closeEdit"
-            ></edit-todo-item>
+            <div v-if="currentTab === 'all' || (currentTab === 'progress' && !item.completed) || (currentTab === 'completed' && item.completed)">
+              <todo-item
+                v-if="editTodoId !== item.id"
+                :todo="item"
+                @editTodo="editTodo"
+              ></todo-item>
+              <edit-todo-item
+                v-if="editTodoId === item.id"
+                :todo="item"
+                @closeEditTodo="closeEdit"
+              ></edit-todo-item>
+            </div>
           </div>
         </draggable>
       </div>
@@ -55,7 +57,7 @@ export default {
   name: 'app',
   data () {
     return {
-      currentTab: 'myTasks',
+      currentTab: 'all',
       isNewTodo: false,
       editTodoId: -1,
       todos: [

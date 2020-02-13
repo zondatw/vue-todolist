@@ -60,31 +60,7 @@ export default {
       currentTab: 'all',
       isNewTodo: false,
       editTodoId: -1,
-      todos: [
-        {
-          'id': 1,
-          'title': 'test yooooooooooooooo',
-          'stared': true,
-          'deadline_start': '2020-02-01',
-          'deadline_end': '2020-02-06',
-          'file': 'media/file/aaa.png',
-          'completed': true,
-        },
-        {
-          'id': 2,
-          'title': 'test test test test test test test',
-          'stared': false,
-          'comment': `I'm test test test test`,
-          'completed': false,
-        },
-        {
-          'id': 3,
-          'title': 'test 123456',
-          'stared': false,
-          'comment': `I'm test test test test`,
-          'completed': false,
-        },
-      ],
+      todos: [],
     }
   },
   components: {
@@ -104,7 +80,21 @@ export default {
     closeEdit () {
       this.isNewTodo = false;
       this.editTodoId = -1;
+    },
+    getTodos () {
+      const api = 'http://localhost:5000/todos'
+      const vm = this
+      vm.$http
+        .get(api)
+        .then(
+          response => (
+            vm.todos = response.data
+          )
+        )
     }
+  },
+  mounted: function () {
+    this.getTodos()
   }
 }
 </script>

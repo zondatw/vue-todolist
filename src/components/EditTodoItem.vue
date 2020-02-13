@@ -86,7 +86,7 @@
       >
         <i class="fas fa-times"></i> Cancel
       </button>
-      <button class="btn btn-primary w-50 btn-lg rounded-0">
+      <button class="btn btn-primary w-50 btn-lg rounded-0" @click="updateTodo">
         <i class="fas fa-plus"></i> Update Task
       </button>
     </div>
@@ -116,6 +116,35 @@ export default {
     },
     updateStatus (field, status) {
       this.cacheTodo[field] = status
+    },
+    updateTodo () {
+      const vm = this
+      const tempTodo = {...this.cacheTodo}
+
+      if (!this.todo) {
+        // create new todo
+        const api = `http://localhost:5000/todos`
+        vm.$http
+          .post(api, tempTodo)
+          .then(
+            response => {
+              console.log(response)
+              vm.$emit('closeEditTodo')
+              vm.$emit('updateData')
+            }
+          )
+      } else {
+        const api = `http://localhost:5000/todos/${vm.todo.id}`
+        vm.$http
+          .put(api, tempTodo)
+          .then(
+            response => {
+              console.log(response)
+              vm.$emit('closeEditTodo')
+              vm.$emit('updateData')
+            }
+          )
+      }
     }
   },
   created () {

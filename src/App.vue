@@ -23,6 +23,7 @@
         </div>
         <edit-todo-item
           v-if="isNewTodo"
+          @updateData="getTodos"
           @closeEditTodo="closeEdit"
         ></edit-todo-item>
       </div>
@@ -39,6 +40,7 @@
               <edit-todo-item
                 v-if="editTodoId === item.id"
                 :todo="item"
+                @updateData="getTodos"
                 @closeEditTodo="closeEdit"
               ></edit-todo-item>
             </div>

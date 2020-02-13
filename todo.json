@@ -30,5 +30,11 @@
       "comment": "I'm test test test test",
       "completed": false
     }
+  ],
+  "sort": [
+    1,
+    2,
+    3,
+    4
   ]
 }

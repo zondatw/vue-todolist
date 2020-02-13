@@ -28,7 +28,7 @@
         ></edit-todo-item>
       </div>
       <div class="mt-4">
-        <draggable v-model="todos">
+        <draggable v-model="todos" @end="updateSort">
           <div v-for="item in todos" :key="item.id">
             <div v-if="currentTab === 'all' || (currentTab === 'progress' && !item.completed) || (currentTab === 'completed' && item.completed)">
               <todo-item
@@ -86,13 +86,39 @@ export default {
     },
     getTodos () {
       const api = 'http://localhost:5000/todos'
+      const sortApi = 'http://localhost:5000/sort'
       const vm = this
+      let tempTodos = []
+      vm.todos = []
+
       vm.$http
         .get(api)
         .then(
-          response => (
-            vm.todos = response.data
-          )
+          response => {
+            tempTodos = response.data
+            vm.$http
+              .get(sortApi)
+              .then(
+                response => {
+                  response.data.forEach(sortId => {
+                    let tempTodo = tempTodos.find(item => item.id === sortId)
+                    vm.todos.push(tempTodo)
+                  })
+                }
+              )
+          }
+        )
+    },
+    updateSort () {
+      const vm = this
+      const api = 'http://localhost:5000/sort'
+      const sort = vm.todos.map(item => item.id)
+      vm.$http
+        .put(api, sort)
+        .then(
+          () => {
+            vm.getTodos()
+          }
         )
     }
   },

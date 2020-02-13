@@ -42,7 +42,16 @@ export default {
   methods: {
     updateStatus (field, status) {
       const vm = this
-      vm.todo[field] = status
+      const api = `http://localhost:5000/todos/${vm.todo.id}`
+      const tempTodo = {...vm.todo}
+      tempTodo[field] = status
+      vm.$http
+        .put(api, tempTodo)
+        .then(
+          () => {
+            vm.$emit('updateData')
+          }
+        )
     },
     editTodo () {
       this.$emit('editTodo', this.todo.id)

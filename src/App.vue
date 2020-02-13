@@ -33,6 +33,7 @@
               <todo-item
                 v-if="editTodoId !== item.id"
                 :todo="item"
+                @updateData="getTodos"
                 @editTodo="editTodo"
               ></todo-item>
               <edit-todo-item

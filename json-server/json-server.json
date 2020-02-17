@@ -1,0 +1,7 @@
+{
+  "port": 5000,
+  "watch": true,
+  "read-only": false,
+  "no-cors": false,
+  "routes": "route.json"
+}

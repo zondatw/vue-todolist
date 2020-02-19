@@ -1,5 +1,9 @@
 # todolist
 
+## Project
+
+練習前端，來自六角學院The F2E的[前端挑戰](https://paper.dropbox.com/doc/001-todolist-by-V3OTg3oVllEX8RvtQvR1y)
+
 ## Project setup
 ```
 npm install
@@ -26,5 +30,5 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ## json server
 ```
-json-server -p 5000 todo.json
+json-server todo.json
 ```

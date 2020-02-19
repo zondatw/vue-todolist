@@ -128,7 +128,6 @@ export default {
           .post(api, tempTodo)
           .then(
             response => {
-              console.log(response)
               vm.$emit('closeEditTodo')
               vm.$emit('updateData')
             }
@@ -139,7 +138,6 @@ export default {
           .put(api, tempTodo)
           .then(
             response => {
-              console.log(response)
               vm.$emit('closeEditTodo')
               vm.$emit('updateData')
             }

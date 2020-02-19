@@ -123,7 +123,7 @@ export default {
 
       if (!this.todo) {
         // create new todo
-        const api = `http://localhost:5000/api/todos`
+        const api = `http://localhost:5000/api/todos/`
         vm.$http
           .post(api, tempTodo)
           .then(

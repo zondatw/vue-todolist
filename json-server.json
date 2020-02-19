@@ -3,5 +3,5 @@
   "watch": true,
   "read-only": false,
   "no-cors": false,
-  "routes": "route.json"
+  "routes": "json-route.json"
 }

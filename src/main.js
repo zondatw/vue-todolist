@@ -16,7 +16,20 @@ Vue.config.productionTip = false
 const router = new VueRouter({
   routes,
   mode: 'history'
-});
+})
+
+router.beforeEach((to, from, next) => {
+  let apiToken = localStorage.getItem('apiToken')
+  if (apiToken) {
+    axios.defaults.headers.common.Authorization = `Bearer ${apiToken}`
+    next()
+  } else {
+    if( to.path !== '/login')
+      next('/login')
+    else
+      next()
+  }
+})
 
 new Vue({
   router,

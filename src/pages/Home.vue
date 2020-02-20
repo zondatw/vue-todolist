@@ -2,9 +2,10 @@
   <div id="home">
     <div class="bg-primary">
       <div class="container justify-content-between d-flex todo-nav">
-        <a href="#" :class="{active: currentTab === 'all'}" @click="currentTab = 'all'">My Tasks</a>
-        <a href="#" :class="{active: currentTab === 'progress'}" @click="currentTab = 'progress'">In Progress</a>
-        <a href="#" :class="{active: currentTab === 'completed'}" @click="currentTab = 'completed'">Completed</a>
+        <a href="#" :class="{active: currentTab === 'all'}" @click.prevent="currentTab = 'all'">My Tasks</a>
+        <a href="#" :class="{active: currentTab === 'progress'}" @click.prevent="currentTab = 'progress'">In Progress</a>
+        <a href="#" :class="{active: currentTab === 'completed'}" @click.prevent="currentTab = 'completed'">Completed</a>
+        <a href="#" @click.prevent="logout">Logout</a>
       </div>
     </div>
 
@@ -120,6 +121,11 @@ export default {
             vm.getTodos()
           }
         )
+    },
+    logout () {
+      localStorage.setItem('apiToken', '')
+      localStorage.removeItem('apiToken')
+      this.$router.push('/login')
     }
   },
   mounted: function () {

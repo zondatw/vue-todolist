@@ -13,6 +13,8 @@ Vue.use(VueRouter)
 
 Vue.config.productionTip = false
 
+axios.defaults.baseURL = "http://localhost:5000/"
+
 const router = new VueRouter({
   routes,
   mode: 'history'

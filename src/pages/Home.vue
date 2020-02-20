@@ -86,8 +86,8 @@ export default {
       this.editTodoId = -1;
     },
     getTodos () {
-      const api = 'http://localhost:5000/api/todos/'
-      const sortApi = 'http://localhost:5000/api/sort/'
+      const api = 'api/todos/'
+      const sortApi = 'api/sort/'
       const vm = this
       let tempTodos = []
       vm.todos = []
@@ -112,7 +112,7 @@ export default {
     },
     updateSort () {
       const vm = this
-      const api = 'http://localhost:5000/api/sort/'
+      const api = 'api/sort/'
       const sort = vm.todos.map(item => item.id)
       vm.$http
         .put(api, sort)

@@ -42,7 +42,7 @@ export default {
   methods: {
     updateStatus (field, status) {
       const vm = this
-      const api = `http://localhost:5000/api/todos/${vm.todo.id}`
+      const api = `api/todos/${vm.todo.id}`
       const tempTodo = {...vm.todo}
       tempTodo[field] = status
       vm.$http

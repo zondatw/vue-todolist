@@ -24,12 +24,17 @@ router.beforeEach((to, from, next) => {
   let apiToken = localStorage.getItem('apiToken')
   if (apiToken) {
     axios.defaults.headers.common.Authorization = `Bearer ${apiToken}`
-    next()
-  } else {
-    if( to.path !== '/login')
-      next('/login')
-    else
+    if (to.path === '/login') {
+      next("/")
+    } else {
       next()
+    }
+  } else {
+    if (to.path !== '/login') {
+      next('/login')
+    } else {
+      next()
+    }
   }
 })
 

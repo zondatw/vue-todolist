@@ -127,7 +127,7 @@ export default {
         vm.$http
           .post(api, tempTodo)
           .then(
-            response => {
+            () => {
               vm.$emit('closeEditTodo')
               vm.$emit('updateData')
             }
@@ -137,7 +137,7 @@ export default {
         vm.$http
           .put(api, tempTodo)
           .then(
-            response => {
+            () => {
               vm.$emit('closeEditTodo')
               vm.$emit('updateData')
             }

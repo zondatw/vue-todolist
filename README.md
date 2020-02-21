@@ -9,6 +9,12 @@
 npm install
 ```
 
+Create `.env.development.local` and `.env.production.local` files, example:
+
+```text
+VUE_APP_API_BASE_URL=http://localhost:5000
+```
+
 ### Compiles and hot-reloads for development
 ```
 npm run serve

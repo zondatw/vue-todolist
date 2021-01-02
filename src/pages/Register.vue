@@ -4,8 +4,8 @@
       <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
         <div class="card card-signin my-5">
           <div class="card-body">
-            <h5 class="card-title text-center">Sign In</h5>
-            <form class="form-signin" @submit.prevent="login">
+            <h5 class="card-title text-center">Sign Up</h5>
+            <form class="form-signin" @submit.prevent="register">
               <div class="form-label-group">
                 <label for="inputUsername">Username</label>
                 <input

@@ -25,7 +25,7 @@ router.beforeEach((to, from, next) => {
   if (apiToken) {
     axios.defaults.headers.common.Authorization = `Bearer ${apiToken}`
     if (to.path === '/login') {
-      next("/")
+      next({ name: 'home' })
     } else {
       next()
     }
@@ -33,7 +33,7 @@ router.beforeEach((to, from, next) => {
     if (to.path === '/register') {
       next()
     } else if (to.path !== '/login') {
-      next('/login')
+      next({ name: 'login' })
     } else {
       next()
     }

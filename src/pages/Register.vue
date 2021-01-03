@@ -52,7 +52,7 @@ export default {
   methods: {
     register () {
       const vm = this
-      const api = `register`
+      const api = `user/register`
       const tempRegisterData = {...this.registerData}
 
       vm.$http

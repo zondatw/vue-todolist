@@ -53,7 +53,7 @@ export default {
   methods: {
     login () {
       const vm = this
-      const api = `login`
+      const api = `user/login`
       const tempLoginData = {...this.loginData}
 
       vm.$http
